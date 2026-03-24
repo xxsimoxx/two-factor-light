@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       xxsimoxx Two Factor
+ * Plugin Name:       Two Factor Light
  * Description:       Enable Two-Factor Authentication using email and backup verification codes.
  * Requires at least: 6.2
  * Version:           0.0.1
@@ -21,8 +21,35 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Don't run if original plugin is active.
  */
 if ( is_plugin_active( 'two-factor/two-factor.php' ) ) {
+	add_action( 
+		'after_plugin_row', 
+		function ( $plugin_file, $plugin_data ) {
+			if ( $plugin_file !== 'x-two-factor/x-two-factor.php' ) {
+				return;
+			}
+
+			$shadow        = '';
+			$notice_msg    = esc_html__( 'xxsimoxx Two Factor is not running because Two Factor is.', 'two-factor' );
+			$notice_args   = array(
+				'type'               => 'error',
+				'additional_classes' => array( 'inline' ),
+			);
+			?>
+			<tr class="plugin-update-tr active">
+				<td colspan="10" class="plugin-update colspanchange">
+					<?php wp_admin_notice( $notice_msg, $notice_args ); ?>
+				</td>
+				<script>
+					document.querySelector('tr[data-plugin="<?php echo $plugin_file; ?>"').classList.add('update');
+				</script>
+			</tr>
+			<?php
+		}, 
+		10, 2 );
 	return;
 }
+
+
 
 /**
  * Shortcut constant to the path of this file.
