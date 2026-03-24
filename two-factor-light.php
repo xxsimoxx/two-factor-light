@@ -37,7 +37,7 @@ if ( is_plugin_active( 'two-factor/two-factor.php' ) ) {
 					<?php wp_admin_notice( $notice_msg, $notice_args ); ?>
 				</td>
 				<script>
-					document.querySelector('tr[data-plugin="<?php echo $plugin_file; ?>"').classList.add('update');
+					document.querySelector('tr[data-plugin="<?php echo esc_html( $plugin_file ); ?>"').classList.add('update');
 				</script>
 			</tr>
 			<?php

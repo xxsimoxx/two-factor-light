@@ -168,7 +168,7 @@ class Two_Factor_Core {
 						$user_meta_keys,
 						call_user_func( array( $provider_class, 'uninstall_user_meta_keys' ) )
 					);
-				} catch ( Exception $e ) {
+				} catch ( Exception $e ) { //phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch
 					// Do nothing.
 				}
 			}
@@ -180,7 +180,7 @@ class Two_Factor_Core {
 						$option_keys,
 						call_user_func( array( $provider_class, 'uninstall_options' ) )
 					);
-				} catch ( Exception $e ) {
+				} catch ( Exception $e ) { //phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch
 					// Do nothing.
 				}
 			}
