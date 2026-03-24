@@ -1,4 +1,4 @@
-# xxsimoxx Two Factor
+# Two Factor Light
 
 This is a fork of [Two Factor](https://wordpress.org/plugins/two-factor/) v. 0.15.0 by WordPress.org that works in [ClassicPress](https://www.classicpress.net/).
 

@@ -127,7 +127,7 @@ class Two_Factor_Core {
 		add_filter( 'two_factor_providers', array( __CLASS__, 'enable_dummy_method_for_debug' ) );
 
 		// Add Settings link to plugin action links.
-		add_filter( 'plugin_action_links_' . plugin_basename( TWO_FACTOR_DIR . 'two-factor.php' ), array( __CLASS__, 'add_settings_action_link' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( TWO_FACTOR_DIR . 'two-factor-light.php' ), array( __CLASS__, 'add_settings_action_link' ) );
 	}
 
 	/**
