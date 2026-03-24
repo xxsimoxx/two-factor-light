@@ -1999,7 +1999,7 @@ class Two_Factor_Core {
 	 */
 	private static function get_recommended_providers( $user ) {
 		$providers = array(
-			'Two_Factor_Totp',
+			'TwoFactor_Provider_WebAuthn',
 			'Two_Factor_Backup_Codes',
 		);
 
