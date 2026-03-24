@@ -88,12 +88,9 @@ class Two_Factor_Core {
 	/**
 	 * Set up filters and actions.
 	 *
-	 * @param object $compat A compatibility layer for plugins.
-	 *
 	 * @since 0.2.0
 	 */
-	public static function add_hooks( $compat ) {
-		// Allow providers to register their hooks.
+	public static function add_hooks() {
 		add_action( 'init', array( __CLASS__, 'get_providers' ) ); // @phpstan-ignore return.void
 
 		add_filter( 'wp_login_errors', array( __CLASS__, 'maybe_show_reset_password_notice' ) );
@@ -278,18 +275,6 @@ class Two_Factor_Core {
 		 *                         the value is the path to the file containing the class.
 		 */
 		$providers = apply_filters( 'two_factor_providers', $providers );
-
-		// FIDO U2F is PHP 5.3+ only.
-		if ( isset( $providers['Two_Factor_FIDO_U2F'] ) && version_compare( PHP_VERSION, '5.3.0', '<' ) ) {
-			unset( $providers['Two_Factor_FIDO_U2F'] );
-			trigger_error( // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
-				sprintf(
-				/* translators: %s: version number */
-					__( 'FIDO U2F is not available because you are using PHP %s. (Requires 5.3 or greater)', 'two-factor' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					PHP_VERSION
-				)
-			);
-		}
 
 		// Map provider keys to classes so that we can instantiate them.
 		$providers = self::get_providers_classes( $providers );

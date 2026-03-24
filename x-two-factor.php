@@ -18,6 +18,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Don't run if original plugin is active.
+ */
+if ( is_plugin_active( 'two-factor/two-factor.php' ) ) {
+	return;
+}
+
+/**
  * Shortcut constant to the path of this file.
  */
 define( 'TWO_FACTOR_DIR', plugin_dir_path( __FILE__ ) );
@@ -36,15 +43,7 @@ require_once TWO_FACTOR_DIR . 'providers/class-two-factor-provider.php';
  * Include the core that handles the common bits.
  */
 require_once TWO_FACTOR_DIR . 'class-two-factor-core.php';
-
-/**
- * A compatibility layer for some of the most-used plugins out there.
- */
-require_once TWO_FACTOR_DIR . 'class-two-factor-compat.php';
-
-$two_factor_compat = new Two_Factor_Compat();
-
-Two_Factor_Core::add_hooks( $two_factor_compat );
+Two_Factor_Core::add_hooks();
 
 // Delete our options and user meta during uninstall.
 register_uninstall_hook( __FILE__, array( Two_Factor_Core::class, 'uninstall' ) );
