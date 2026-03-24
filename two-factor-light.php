@@ -51,22 +51,22 @@ if ( is_plugin_active( 'two-factor/two-factor.php' ) ) {
 /**
  * Shortcut constant to the path of this file.
  */
-define( 'TWO_FACTOR_DIR', plugin_dir_path( __FILE__ ) );
+define( 'TWO_FACTOR_LIGHT_DIR', plugin_dir_path( __FILE__ ) );
 
 /**
  * Version of the plugin.
  */
-define( 'TWO_FACTOR_VERSION', '0.0.1' );
+define( 'TWO_FACTOR_LIGHT_VERSION', '0.1.0' );
 
 /**
  * Include the base class here, so that other plugins can also extend it.
  */
-require_once TWO_FACTOR_DIR . 'providers/class-two-factor-provider.php';
+require_once TWO_FACTOR_LIGHT_DIR . 'providers/class-two-factor-provider.php';
 
 /**
  * Include the core that handles the common bits.
  */
-require_once TWO_FACTOR_DIR . 'class-two-factor-core.php';
+require_once TWO_FACTOR_LIGHT_DIR . 'class-two-factor-core.php';
 Two_Factor_Core::add_hooks();
 
 // Delete our options and user meta during uninstall.

@@ -127,7 +127,7 @@ class Two_Factor_Core {
 		add_filter( 'two_factor_providers', array( __CLASS__, 'enable_dummy_method_for_debug' ) );
 
 		// Add Settings link to plugin action links.
-		add_filter( 'plugin_action_links_' . plugin_basename( TWO_FACTOR_DIR . 'two-factor-light.php' ), array( __CLASS__, 'add_settings_action_link' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( TWO_FACTOR_LIGHT_DIR . 'two-factor-light.php' ), array( __CLASS__, 'add_settings_action_link' ) );
 	}
 
 	/**
@@ -207,9 +207,9 @@ class Two_Factor_Core {
 	 */
 	private static function get_default_providers() {
 		return array(
-			'Two_Factor_Email'        => TWO_FACTOR_DIR . 'providers/class-two-factor-email.php',
-			'Two_Factor_Backup_Codes' => TWO_FACTOR_DIR . 'providers/class-two-factor-backup-codes.php',
-			'Two_Factor_Dummy'        => TWO_FACTOR_DIR . 'providers/class-two-factor-dummy.php',
+			'Two_Factor_Email'        => TWO_FACTOR_LIGHT_DIR . 'providers/class-two-factor-email.php',
+			'Two_Factor_Backup_Codes' => TWO_FACTOR_LIGHT_DIR . 'providers/class-two-factor-backup-codes.php',
+			'Two_Factor_Dummy'        => TWO_FACTOR_LIGHT_DIR . 'providers/class-two-factor-dummy.php',
 		);
 	}
 
@@ -983,7 +983,7 @@ class Two_Factor_Core {
 
 		if ( ! function_exists( 'login_header' ) ) {
 			// We really should migrate login_header() out of `wp-login.php` so it can be called from an includes file.
-			require_once TWO_FACTOR_DIR . 'includes/function.login-header.php';
+			require_once TWO_FACTOR_LIGHT_DIR . 'includes/function.login-header.php';
 		}
 
 		// Disable the language switcher.
@@ -1112,7 +1112,7 @@ class Two_Factor_Core {
 		</script>
 		<?php
 		if ( ! function_exists( 'login_footer' ) ) {
-			require_once TWO_FACTOR_DIR . 'includes/function.login-footer.php';
+			require_once TWO_FACTOR_LIGHT_DIR . 'includes/function.login-footer.php';
 		}
 
 			login_footer();
@@ -1928,7 +1928,7 @@ class Two_Factor_Core {
 
 		$providers = self::get_supported_providers_for_user( $user );
 
-		wp_enqueue_style( 'user-edit-2fa', plugins_url( 'user-edit.css', __FILE__ ), array(), TWO_FACTOR_VERSION );
+		wp_enqueue_style( 'user-edit-2fa', plugins_url( 'user-edit.css', __FILE__ ), array(), TWO_FACTOR_LIGHT_VERSION );
 
 		$enabled_providers = array_keys( self::get_available_providers_for_user( $user ) );
 
