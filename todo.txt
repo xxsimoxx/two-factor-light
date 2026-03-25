@@ -1,0 +1,5 @@
+WebAuthn
+https://github.com/WordPress/two-factor/pull/427
+
+Fix nonce
+https://github.com/WordPress/two-factor/pull/833
