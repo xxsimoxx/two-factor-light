@@ -5,3 +5,5 @@ https://github.com/WordPress/two-factor/pull/427
 
 Fix nonce
 https://github.com/WordPress/two-factor/pull/833
+
+Backports up to 26 03 2026
