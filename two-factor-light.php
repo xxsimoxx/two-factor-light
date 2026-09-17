@@ -3,7 +3,7 @@
  * Plugin Name:       Two Factor Light
  * Description:       Enable Two-Factor Authentication using email and backup verification codes.
  * Requires at least: 6.2
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires PHP:      7.4
  * Requires CP:       2.0
  * Author:            Simone Fioravanti
@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Don't run if original plugin is active.
  */
+include_once ABSPATH . 'wp-admin/includes/plugin.php';
 if ( is_plugin_active( 'two-factor/two-factor.php' ) ) {
 	add_action(
 		'after_plugin_row',
